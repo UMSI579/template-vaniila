@@ -1,0 +1,26 @@
+{
+  "name": "midterm1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cy:open",
+    "start": "node ./scripts/start.js",
+    "cy:run": "cypress run",
+    "cy:run:component": "cypress run --component",
+    "cy:open": "cypress open",
+    "local:open": "start-test 8080 cy:open",
+    "local:run": "start-test 8080 cy:run",
+    "local:run:record": "start-test 8080 cy:run:record"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.4.0",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "serve": "^14.0.1",
+    "start-server-and-test": "^1.14.0"
+  }
+}
