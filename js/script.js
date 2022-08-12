@@ -4,7 +4,9 @@ const addNumbers = (first, second) => {
   return first + second;
 }
 
-
-export default {
-  addNumbers
+if(typeof module !== 'undefined') {
+  module.exports = {
+    addNumbers
+  }
 }
+
