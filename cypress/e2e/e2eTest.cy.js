@@ -1,3 +1,17 @@
+// Monitor console warnings, errors, and logs
+let consoleError;
+let consoleWarning;
+let consoleLog;
+
+
+Cypress.on('window:before:load', (win) => {
+  consoleError = cy.spy(win.console, 'error');
+  consoleWarning = cy.spy(win.console, 'warn');
+  consoleLog = cy.spy(win.console, 'log');
+});
+const DELAY = 1000;
+
+
 describe('Test the template', () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
@@ -10,4 +24,13 @@ describe('Test the template', () => {
     cy.get('h1').should('include.text', 'Vanilla Template')
     cy.get('main').should('include.text', 'Main Content')
   })
+
+  afterEach(() => {
+    // Confirm there are no console log/warning/errors after every test iteration.
+    cy.wait(DELAY).then(() => {
+      expect(consoleError).to.not.be.called;
+      expect(consoleWarning).to.not.be.called;
+      expect(consoleLog).to.not.be.called;
+    });
+  });
 })
