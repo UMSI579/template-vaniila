@@ -3,8 +3,8 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
-    # let's make sure our tests pass on Chrome browser
-    name: E2E on Chrome
+    name: Instructor Test Runner
+    if: ${{ !contains(github.repository, 'canvas') }}
     steps:
       - name: Check out code
         uses: actions/checkout@v2

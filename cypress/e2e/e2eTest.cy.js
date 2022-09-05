@@ -12,13 +12,13 @@ Cypress.on('window:before:load', (win) => {
 const DELAY = 1000;
 
 
-describe('Test the template', () => {
+describe('Basic Tests', () => {
   beforeEach(() => {
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test.
-    cy.visit('http://localhost:8080')
+    cy.visit(`http://localhost:${Cypress.env('theport') || 8080}`)
   })
   it('has a title', () => {
     cy.get('h1').should('include.text', 'Vanilla Template')

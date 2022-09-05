@@ -7,4 +7,6 @@ module.exports = defineConfig({
     },
   },
   port: 61234,
+  video:false,
+  screenshotOnRunFailure: false,
 });
