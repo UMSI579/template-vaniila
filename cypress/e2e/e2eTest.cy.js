@@ -20,7 +20,7 @@ describe('Basic Tests', () => {
     // we include it in our beforeEach function so that it runs before each test.
     cy.visit(`http://localhost:${Cypress.env('theport') || 8080}`)
   })
-  it('has a title', () => {
+  it('passes a very basic test to confirm tests are running', () => {
     cy.get('h1').should('include.text', 'Vanilla Template')
     cy.get('main').should('include.text', 'Main Content')
   })
@@ -28,9 +28,9 @@ describe('Basic Tests', () => {
   afterEach(() => {
     // Confirm there are no console log/warning/errors after every test iteration.
     cy.wait(DELAY).then(() => {
-      expect(consoleError).to.not.be.called;
-      expect(consoleWarning).to.not.be.called;
-      expect(consoleLog).to.not.be.called;
+      expect(consoleError, 'ERRORS FOUND IN YOUR CODE, CHECK THE JS CONSOLE').to.not.be.called;
+      expect(consoleWarning, 'WARNINGS FOUND IN YOUR CODE, CHECK THE JS CONSOLE').to.not.be.called;
+      expect(consoleLog, 'YOU SHOULD NOT HAVE console.log() IN YOUR SUBMITTED CODE').to.not.be.called;
     });
   });
 })
