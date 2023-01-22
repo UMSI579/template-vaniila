@@ -4,7 +4,6 @@ jobs:
   cypress-run:
     runs-on: ubuntu-20.04
     name: Instructor Test Runner
-    if: ${{ !contains(github.repository, 'canvas') }}
     steps:
       - name: Check out code
         uses: actions/checkout@v2
