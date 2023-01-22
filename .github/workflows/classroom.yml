@@ -10,7 +10,6 @@ permissions:
 jobs:
   build:
     name: Autograding
-    if: contains(github.repository, 'canvas')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
