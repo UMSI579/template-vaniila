@@ -5,9 +5,9 @@ let consoleLog;
 
 
 Cypress.on('window:before:load', (win) => {
-  consoleError = cy.spy(win.console, 'error');
-  consoleWarning = cy.spy(win.console, 'warn');
-  consoleLog = cy.spy(win.console, 'log');
+  consoleError = cy.spy(win.console, 'error').log(false);
+  consoleWarning = cy.spy(win.console, 'warn').log(false);
+  consoleLog = cy.spy(win.console, 'log').log(false);
 });
 const DELAY = 1000;
 
@@ -28,9 +28,15 @@ describe('Basic Tests', () => {
   afterEach(() => {
     // Confirm there are no console log/warning/errors after every test iteration.
     cy.wait(DELAY).then(() => {
-      expect(consoleError, 'ERRORS FOUND IN YOUR CODE, CHECK THE JS CONSOLE').to.not.be.called;
-      expect(consoleWarning, 'WARNINGS FOUND IN YOUR CODE, CHECK THE JS CONSOLE').to.not.be.called;
-      expect(consoleLog, 'YOU SHOULD NOT HAVE console.log() IN YOUR SUBMITTED CODE').to.not.be.called;
+    if (consoleLog.callCount > 0) {
+        throw new Error('YOU SHOULD NOT HAVE console.log() IN YOUR SUBMITTED CODE')
+      }
+      if (consoleError.callCount > 0) {
+        throw new Error('ERRORS FOUND IN YOUR CODE! You need to fix them. Check the JS console in your application.')
+      }
+      if (consoleWarning.callCount > 0) {
+        throw new Error('WARNINGS FOUND IN YOUR CODE! You need to address them. Check the JS console in your application.')
+      }
     });
   });
 })
