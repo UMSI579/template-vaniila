@@ -12,4 +12,4 @@ RUN apt-get update && \
         libnss3 \
         libxss1 \
         libasound2 \
-        libxtst6 xauth xvfb \
+        libxtst6 xauth xvfb
