@@ -1,5 +1,5 @@
 {
-  "name": "midterm1",
+  "name": "vanillatemplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,15 +17,20 @@
     "codespace:test": "export PORT=10000 && start-test 10000 cy:runcode",
     "local:basic": "start-test 8080 cy:basic",
     "local:stretch": "start-test 8080 cy:stretch",
-    "local:run:record": "start-test 8080 cy:run:record"
+    "local:run:record": "start-test 8080 cy:run:record",
+    "lint:js": "eslint js/script.js ",
+    "lint": "npm run lint:js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.17.4",
+    "cypress": "^13.6.0",
     "http-server": "^14.1.1"
   },
   "dependencies": {
+    "eslint-plugin-no-for-loop": "file:eslint-plugin-no-for-loop",
+    "eslint": "^8.56.0",
+    "eslint-plugin-unicorn": "^50.0.1",
     "serve": "^14.0.1",
     "start-server-and-test": "^1.14.0"
   }
